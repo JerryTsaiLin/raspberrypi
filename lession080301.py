@@ -7,9 +7,9 @@ def main():
     now=datetime.now()
     current_file_file=now.strftime('%Y_%m_%d.log')
 
-    log_path=file.created_logfile(file=current_file_file)
+    log_path=tools.file.created_logfile(file=current_file_file)
 
-    file.record_info(log_path)
+    tools.file.record_info(log_path)
    
 
    
