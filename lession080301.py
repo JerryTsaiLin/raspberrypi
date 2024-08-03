@@ -1,4 +1,4 @@
-import tools.file 
+from  tools.file import created_logfile,record_info
 from datetime import datetime
 
 
@@ -7,9 +7,9 @@ def main():
     now=datetime.now()
     current_file_file=now.strftime('%Y_%m_%d.log')
 
-    log_path=tools.file.created_logfile(file=current_file_file)
+    log_path=created_logfile(file=current_file_file)
 
-    tools.file.record_info(log_path)
+    record_info(log_path)
    
 
    
