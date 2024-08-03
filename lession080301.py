@@ -2,7 +2,7 @@ import os.path
 import random
 from datetime import datetime
 
-def created_directory():
+def created_logfile():
     current_path=os.path.abspath(__name__)#取得目前檔案路徑
     directory_name=os.path.dirname(current_path) #取得目前目錄名稱
     data_path=os.path.join(directory_name,'data')#目前資料夾路徑上加上data目錄
@@ -11,12 +11,6 @@ def created_directory():
         os.mkdir(data_path)
     else:
         print("目錄已建立!") 
-
-    return data_path
-
-def main():
-      
-    data_path=created_directory()
 
     log_path=os.path.join(data_path,'iot.log')
 
@@ -27,6 +21,12 @@ def main():
     else:
         print("have file")
 
+  
+    return log_path
+
+
+def record_info(log_path):
+   
     now=datetime.now()
     now_str=now.strftime('%Y-%m-%d %H:%M:%S')
 
@@ -36,6 +36,15 @@ def main():
     with open(log_path,mode='a',encoding='utf-8', newline='') as file:
     # file.write('2024-07-27 15:30:33, 70.5,29.5\n')
         file.write(now_str + ', ' + humidity + ',' + celsius + "\n")
+
+
+def main():
+    log_path=created_logfile()
+
+    record_info(log_path)
+   
+
+   
 
 if __name__=='__main__':
     main()
